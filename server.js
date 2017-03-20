@@ -53,6 +53,13 @@ app.delete('/shopping-list/:id', (req, res) => {
   res.status(204).end();
 });
 
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Deleted recipe \`${req.params.id}\``);
+  res.status(204).end();
+});
+
+
 
 // when new recipe added, ensure has required fields. if not,
 // log error and return 400 status code with hepful message.
@@ -80,3 +87,8 @@ app.get('/recipes', (req, res) => {
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
 });
+
+//DELETE example, for postman, must look for id w/ get have '/:id' for get endpoint and returns 
+//the ids + recipes, copy id then go into the DEL for postman and add that after the 
+//recipe endpoint, then repeat 1 to see the left over recipes after delete job! 
+
